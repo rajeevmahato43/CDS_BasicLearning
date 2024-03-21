@@ -1,0 +1,72 @@
+{
+  "_version": "1.8.0",
+  "sap.app": {
+    "id": "Books",
+    "type": "application",
+    "title": "Book Store Details",
+    "description": "bookStore",
+    "dataSources": {
+      "bookstore": {
+        "uri": "/odata/v4/bookstore/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": true,
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.115.1",
+      "libs": {
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "bookstore",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": false,
+          "earlyRequests": true,
+          "groupProperties": {
+            "default": {
+              "submit": "Auto"
+            }
+          }
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "bookStore",
+          "target": "BookStore"
+        }
+      ],
+      "targets": {
+        "BookStore": {
+          "type": "Component",
+          "id": "BookStore",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "BooksSRV"
+            }
+          }
+        }
+      }
+    }
+  }
+}

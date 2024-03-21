@@ -1,0 +1,65 @@
+{
+    "services": {
+      "LaunchPage": {
+        "adapter": {
+          "config": {
+            "catalogs": [],
+            "groups": [
+              {
+                "id": "Bookshop",
+                "title": "Bookshop",
+                "isPreset": true,
+                "isVisible": true,
+                "isGroupLocked": false,
+                "tiles": [
+                  {
+                    "id": "BrowseBooks",
+                    "tileType": "sap.ushell.ui.tile.StaticTile",
+                    "properties": {
+                      "title": "Browse Books",
+                      "targetURL": "#Books-display"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "NavTargetResolution": {
+        "config": {
+          "enableClientSideTargetResolution": true
+        }
+      },
+      "ClientSideTargetResolution": {
+        "adapter": {
+          "config": {
+            "inbounds": {
+              "BrowseBooks": {
+                "semanticObject": "Books",
+                "action": "display",
+                "title": "Browse Books",
+                "signature": {
+                  "parameters": {
+                    "Books.ID": {
+                      "renameTo": "ID"
+                    },
+                    "Authors.books.ID": {
+                      "renameTo": "ID"
+                    }
+                  },
+                  "additionalParameters": "ignored"
+                },
+                "resolutionResult": {
+                  "applicationType": "SAPUI5",
+                  "additionalInformation": "SAPUI5.Component=bookshop",
+                  "url": "bookStore/webapp"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
