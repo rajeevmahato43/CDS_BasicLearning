@@ -1,0 +1,45 @@
+{
+  "xsappname": "LearnBasic-auth",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.BookViewer",
+      "description": "BookViewer"
+    },
+    {
+      "name": "$XSAPPNAME.BookManager",
+      "description": "BookManager"
+    },
+    {
+      "name": "$XSAPPNAME.mtcallback",
+      "description": "Subscription via SaaS Registry",
+      "grant-as-authority-to-apps": [
+        "$XSAPPNAME(application,sap-provisioning,tenant-onboarding)"
+      ]
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "BookViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.BookViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "BookManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.BookManager"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "http://localhost:5001/"
+    ]
+  }
+}

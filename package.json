@@ -7,17 +7,32 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-mtxs": "^1.9",
+    "@sap/xssec": "^3",
     "express": "^4",
-    "sqlite3": "^5.1.7"
+    "hdb": "^0.19.7"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^2.6.7",
     "eslint": "^8.57.0"
   },
   "scripts": {
+    "build": "npx mbt build",
+    "deploy": "cf deploy mta_archives/LearnBasic_1.0.0.mtar",
     "start": "cds-serve"
   },
   "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana-cloud"
+      },
+      "[hybrid]": {
+        "auth": "xsuaa",
+        "db": "hana"
+      },
+      "auth": "xsuaa"
+    }
   }
 }
